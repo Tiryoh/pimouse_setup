@@ -1,8 +1,11 @@
 install:
-	cp setup.bash /etc/init.d/raspimouse
-	chmod +x /etc/init.d/raspimouse
-	update-rc.d raspimouse defaults
+	cp raspimouse.service /etc/systemd/system/raspimouse.service
+	systemctl daemon-reload
+	systemctl enable raspimouse.service
+	echo 'Run "systemctl start raspimouse"'
 
 uninstall:
-	update-rc.d raspimouse remove
-	rm /etc/init.d/raspimouse
+	systemctl stop raspimouse.service
+	systemctl disable raspimouse.service
+	rm /etc/systemd/system/raspimouse.service
+	systemctl daemon-reload
