@@ -4,7 +4,8 @@ After=network.target
 
 [Service]
 Type=forking
-ExecStart=/home/ubuntu/pimouse_setup/setup.bash
+ExecStart=/bin/bash -c '/home/ubuntu/pimouse_setup/setup.bash'
+ExecStop=/sbin/rmmod rtmouse
 Restart=no
 StandardOutput=syslog
 StandardError=syslog

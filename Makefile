@@ -11,7 +11,7 @@ install: ## install the raspimouse device driver installer as a service
 	@echo 'Run "systemctl start raspimouse"'
 
 uninstall: ## remove the raspimouse device driver installer from systemd
-	systemctl stop raspimouse.service
+	-systemctl stop raspimouse.service
 	systemctl disable raspimouse.service
 	rm /etc/systemd/system/raspimouse.service
 	systemctl daemon-reload
