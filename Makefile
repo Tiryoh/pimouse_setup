@@ -1,4 +1,5 @@
 .DEFAULT_GOAL := help
+MAKEFILE_DIR := $(dir $(lastword $(MAKEFILE_LIST)))
 
 help:
 	@echo "the RaspberryPiMouse device driver installer"
