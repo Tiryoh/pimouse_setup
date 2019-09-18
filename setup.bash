@@ -2,8 +2,10 @@
 
 #exec 2> /tmp/setup.log
 
+[[ ! -z $(lsmod | grep rtmouse) ]] && { echo "rtmouse driver has been installed";exit 1; }
+
 cd /home/ubuntu/RaspberryPiMouse/src/drivers/
-/sbin/insmod rtmouse.ko || /bin/bash /home/ubuntu/RaspberryPiMouse/utils/build_install.bash
+insmod rtmouse.ko || /bin/bash /home/ubuntu/RaspberryPiMouse/utils/build_install.bash
 
 sleep 1                   #すぐにはデバイスファイルができないので待つ
 chmod 666 /dev/rt*
