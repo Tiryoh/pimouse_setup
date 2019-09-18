@@ -3,10 +3,11 @@ Description=raspimouse driver
 After=network.target
 
 [Service]
-Type=forking
-ExecStart=/bin/bash -c '/home/ubuntu/pimouse_setup/setup.bash'
-ExecStop=/sbin/rmmod rtmouse
+Type=oneshot
+RemainAfterExit=yes
 Restart=no
+ExecStart=/bin/bash -c '/home/ubuntu/pimouse_setup/setup.bash'
+ExecStopPost=/sbin/rmmod rtmouse
 StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=rtmouse
