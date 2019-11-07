@@ -16,6 +16,6 @@ install: ## install the raspimouse device driver
 	sudo modprobe rtmouse
 
 uninstall: ## remove the raspimouse device driver
-	sudo modprobe -r rtmouse
+	-sudo modprobe -r rtmouse
 	sudo rm /etc/modules-load.d/rtmouse.conf
-	-sudo rm /lib/modules/`uname -r`/rtmouse.ko
+	sudo rm /lib/modules/`uname -r`/rtmouse.ko
