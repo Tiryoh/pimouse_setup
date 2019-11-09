@@ -7,10 +7,10 @@ help:
 
 install: ## install the raspimouse device driver
 	[ -d ${MAKEFILE_DIR}/../RaspberryPiMouse ] || su -c 'cd ${MAKEFILE_DIR}/../ && git clone https://github.com/rt-net/RaspberryPiMouse.git' -s /bin/sh $(shell logname)
-	cd ${MAKEFILE_DIR}/../RaspberryPiMouse/src/drivers && \
-	su -c 'make' -s /bin/sh $(shell logname) && \
-	sudo make install && \
-	sudo cp rtmouse.ko /lib/modules/`uname -r`/
+	cd ${MAKEFILE_DIR}/../RaspberryPiMouse && \
+	su -c './utils/build_install.bash' -s /bin/sh $(shell logname) && \
+	sudo rmmod rtmouse.ko && \
+	sudo cp src/drivers/rtmouse.ko /lib/modules/`uname -r`/
 	sudo depmod -A
 	echo rtmouse | sudo tee /etc/modules-load.d/rtmouse.conf > /dev/null
 	sudo modprobe rtmouse
