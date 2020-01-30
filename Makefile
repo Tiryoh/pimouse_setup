@@ -10,7 +10,7 @@ install: ## install the raspimouse device driver
 	cd ${MAKEFILE_DIR}/../RaspberryPiMouse && \
 	su -c './utils/build_install.bash' -s /bin/sh $(shell logname) && \
 	sudo rmmod rtmouse.ko && \
-	sudo cp src/drivers/rtmouse.ko /lib/modules/`uname -r`/
+	sudo cp src/drivers/rtmouse.ko /lib/modules/`uname -r`/kernel/drivers/misc/
 	sudo depmod -A
 	echo rtmouse | sudo tee /etc/modules-load.d/rtmouse.conf > /dev/null
 	sudo modprobe rtmouse
@@ -18,4 +18,4 @@ install: ## install the raspimouse device driver
 uninstall: ## remove the raspimouse device driver
 	-sudo modprobe -r rtmouse
 	sudo rm /etc/modules-load.d/rtmouse.conf
-	sudo rm /lib/modules/`uname -r`/rtmouse.ko
+	sudo rm /lib/modules/`uname -r`/kernel/drivers/misc/rtmouse.ko
