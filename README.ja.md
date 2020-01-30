@@ -2,17 +2,9 @@
 
 [rt-net/RaspberryPiMouse](https://github.com/rt-net/RaspberryPiMouse)のデバイスドライバをOS起動後に自動でロードするためのインストーラです。
 
-「Raspberry Piで学ぶ ROSロボット入門」の4章で作る、デバイスドライバのインストーラ([ryuichiueda/pimouse_setup](https://github.com/ryuichiueda/pimouse_setup))をベースにしています。  
-`systemd`を使ってサービスとして起動できるようにアップデートしてあります。
+`udev`を使ってモジュールをロードできるようにします。
 
 ## 使い方
-
-* [rt-net/RaspberryPiMouse](https://github.com/rt-net/RaspberryPiMouse)を`/home/ubuntu`にダウンロードし、インストール
-
-```sh
-cd $HOME && git clone https://github.com/rt-net/RaspberryPiMouse.git
-./utils/build_install.bash
-```
 
 * このインストーラをダウンロード
 
